@@ -1,6 +1,9 @@
 # AntJasyptPasswordEncryptor
 ANT task used for is used for generating encrypted passwords or decrypting passwords.
 
+### Dependencies
+1. jasypt-1.9.3.jar
+ 
 An example of the usage of the task is below
 
 ```
