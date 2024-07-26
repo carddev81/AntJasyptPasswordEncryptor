@@ -1,0 +1,30 @@
+<project name="Encrypt a password" default="run" basedir=".">
+	<description>
+		This build was created to test the jasypt encryptor ant task
+	</description>
+
+	<taskdef resource="net/sf/antcontrib/antlib.xml"/>
+
+	<taskdef name="jasyptencryptor" classname="com.omo.tools.ant.JasyptPasswordEncryptorTask" />
+
+	<!-- =================================================================== -->
+	<!-- Initialize the Properties                                           -->
+	<!-- =================================================================== -->
+	<target name="init" description="initialize properties for build">
+			<echo>Initializing properties here...</echo>
+			<tstamp />
+			<property environment="env"/>
+			<!-- <echoproperties/> -->
+	</target>
+
+	<target name="run" depends="init" description="initialize properties for build">
+		<echo>Testing the password encryptor...</echo>
+		<jasyptencryptor property="encryption" encryptorPasswordPhrase="docsecretpassword" password="601Rj/b3mHoVFlHvUdrntafXNl4HglhS" verbose="true"/>
+		<echo>encryption=${encryption}</echo>
+
+		<echo>Testing the password decryptor...</echo>
+		<!-- <jasyptencryptor decrypt="true" property="decryptedValue" encryptorPasswordPhrase="hellyeah" password="8gSk8IMJzPdPyH3FzJCCpucbTbptb+AuAvUitKZ0lIg=" verbose="true" failonerror="false" /> -->
+		<!-- <jasyptencryptor decrypt="true" property="decryptedValue" encryptorPasswordPhrase="hellyeah" password="Tbptb+AuAvUitKZ0lIg=" verbose="true" failonerror="true" />-->
+		<echo>decryptedValue=${encryption}</echo>
+	</target>
+</project>
